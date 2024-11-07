@@ -60,9 +60,8 @@ public class Prueba extends JFrame{
 		contentPane.add(btn2);
 	}
 
-
-
 }
+
 class misEventos extends MouseAdapter{
 
 	@Override
