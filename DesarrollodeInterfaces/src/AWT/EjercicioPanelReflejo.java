@@ -6,30 +6,30 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EjercicioPanelReflejo extends JFrame {
 
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
 
-    // Componentes de la parte superior (Original)
+    // Parte superior
     private JRadioButton rb1, rb2, rb3;
     private JCheckBox cb4, cb5, cb6;
     private JTextField textField;
     private JComboBox<String> comboBox;
     private JSpinner spinner;
 
-    // Componentes de la parte inferior (Espejo)
+    // Parte inferior
     private JRadioButton rb1Mirror, rb2Mirror, rb3Mirror;
     private JCheckBox cb4Mirror, cb5Mirror, cb6Mirror;
     private JTextField textFieldMirror;
     private JComboBox<String> comboBoxMirror;
     private JSpinner spinnerMirror;
 
-    /**
-     * Launch the application.
-     */
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -43,18 +43,15 @@ public class EjercicioPanelReflejo extends JFrame {
         });
     }
 
-    /**
-     * Create the frame.
-     */
     public EjercicioPanelReflejo() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 600, 600);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-        contentPane.setLayout(new GridLayout(2, 1)); // Dos secciones, Original y Espejo
+        contentPane.setLayout(new GridLayout(2, 1)); //Dos paneles
         setContentPane(contentPane);
 
-        // Panel superior (Original)
+        // Panel superior
         JPanel originalPanel = new JPanel(new GridLayout(4, 3));
         originalPanel.setBorder(BorderFactory.createTitledBorder("Original"));
         
@@ -70,11 +67,13 @@ public class EjercicioPanelReflejo extends JFrame {
         comboBox = new JComboBox<>(new String[]{"Item 1", "Item 2", "Item 3"});
         spinner = new JSpinner(new SpinnerNumberModel(20, 0, 100, 1));
         
+        //Añadimos los botones al grupo
         ButtonGroup group = new ButtonGroup();
         group.add(rb1);
         group.add(rb2);
         group.add(rb3);
 
+        //Añadimos al panel Original los componentes
         originalPanel.add(rb1);
         originalPanel.add(cb4);
         originalPanel.add(textField);
@@ -101,13 +100,13 @@ public class EjercicioPanelReflejo extends JFrame {
         comboBoxMirror = new JComboBox<>(new String[]{"Item 1", "Item 2", "Item 3"});
         spinnerMirror = new JSpinner(new SpinnerNumberModel(20, 0, 100, 1));
 
-        // Agrupamos los RadioButtons del espejo para asegurar que solo uno esté seleccionado a la vez
+        //Añadimos al grupo los radiobutton espejos
         ButtonGroup mirrorGroup = new ButtonGroup();
         mirrorGroup.add(rb1Mirror);
         mirrorGroup.add(rb2Mirror);
         mirrorGroup.add(rb3Mirror);
 
-        // Deshabilitar los componentes del espejo
+        //Fijamos como desactivados
         rb1Mirror.setEnabled(false);
         rb2Mirror.setEnabled(false);
         rb3Mirror.setEnabled(false);
@@ -118,6 +117,7 @@ public class EjercicioPanelReflejo extends JFrame {
         comboBoxMirror.setEnabled(false);
         spinnerMirror.setEnabled(false);
 
+        //Añadimos componentes al panel espejo
         mirrorPanel.add(rb1Mirror);
         mirrorPanel.add(cb4Mirror);
         mirrorPanel.add(textFieldMirror);
@@ -128,39 +128,60 @@ public class EjercicioPanelReflejo extends JFrame {
         mirrorPanel.add(cb6Mirror);
         mirrorPanel.add(spinnerMirror);
 
-        // Añadir los paneles al contentPane
+        //Añadimos al panel principal los otros dos
         contentPane.add(originalPanel);
         contentPane.add(mirrorPanel);
 
-        // Sincronizar cambios
-        rb1.addActionListener(e -> {
-            rb1Mirror.setSelected(rb1.isSelected());
-            if (rb1.isSelected()) {
-                rb2Mirror.setSelected(false);
-                rb3Mirror.setSelected(false);
+        
+        rb1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                rb1Mirror.setSelected(rb1.isSelected());
+                if (rb1.isSelected()) {
+                    rb2Mirror.setSelected(false);
+                    rb3Mirror.setSelected(false);
+                }
             }
         });
 
-        rb2.addActionListener(e -> {
-            rb2Mirror.setSelected(rb2.isSelected());
-            if (rb2.isSelected()) {
-                rb1Mirror.setSelected(false);
-                rb3Mirror.setSelected(false);
+        rb2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                rb2Mirror.setSelected(rb2.isSelected());
+                if (rb2.isSelected()) {
+                    rb1Mirror.setSelected(false);
+                    rb3Mirror.setSelected(false);
+                }
             }
         });
 
-        rb3.addActionListener(e -> {
-            rb3Mirror.setSelected(rb3.isSelected());
-            if (rb3.isSelected()) {
-                rb1Mirror.setSelected(false);
-                rb2Mirror.setSelected(false);
+        rb3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                rb3Mirror.setSelected(rb3.isSelected());
+                if (rb3.isSelected()) {
+                    rb1Mirror.setSelected(false);
+                    rb2Mirror.setSelected(false);
+                }
             }
         });
 
-        cb4.addActionListener(e -> cb4Mirror.setSelected(cb4.isSelected()));
-        cb5.addActionListener(e -> cb5Mirror.setSelected(cb5.isSelected()));
-        cb6.addActionListener(e -> cb6Mirror.setSelected(cb6.isSelected()));
+        cb4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cb4Mirror.setSelected(cb4.isSelected());
+            }
+        });
 
+        cb5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cb5Mirror.setSelected(cb5.isSelected());
+            }
+        });
+
+        cb6.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                cb6Mirror.setSelected(cb6.isSelected());
+            }
+        });
+
+        //Listener del Texfield
         textField.getDocument().addDocumentListener(new DocumentListener() {
             public void insertUpdate(DocumentEvent e) {
                 textFieldMirror.setText(textField.getText());
@@ -172,9 +193,20 @@ public class EjercicioPanelReflejo extends JFrame {
                 textFieldMirror.setText(textField.getText());
             }
         });
-
-        comboBox.addActionListener(e -> comboBoxMirror.setSelectedItem(comboBox.getSelectedItem()));
-
-        spinner.addChangeListener((ChangeListener) e -> spinnerMirror.setValue(spinner.getValue()));
+        
+        //Listener del comboBox
+        comboBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                comboBoxMirror.setSelectedItem(comboBox.getSelectedItem());
+            }
+        });
+        
+        //Listener del spinner
+        spinner.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                spinnerMirror.setValue(spinner.getValue());
+            }
+        });
     }
 }
+
