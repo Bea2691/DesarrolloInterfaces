@@ -6,5 +6,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/Alum_DAM/Downloads/JTattoo-1.6.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Alum_DAM/Downloads/flatlaf-3.5.2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
