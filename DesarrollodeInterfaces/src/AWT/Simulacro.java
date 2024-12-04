@@ -21,9 +21,7 @@ public class Simulacro extends JFrame {
 	private JTextField tfadios;
 	private JTextField tfmouse;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -37,9 +35,7 @@ public class Simulacro extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public Simulacro() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 736, 521);
@@ -116,17 +112,17 @@ public class Simulacro extends JFrame {
 }
 /* 
  *Eventos dados 
-ActionPerformed
-ActionEvent
-ActionListener
+ActionPerformed para JButton, esto es modo navazo
+ActionEvent para JButton
+ActionListener para JButton
 MouseAdapter-Mouse Clicked
-MouseListener
+MouseListener 
 MouseMotionListener
-WindowListener
-ItemListener
-ItemEvent
-CaretListener
-ChangeListener
-ListSelectionListener
-SelectionListener
+WindowListener para JFrame
+ItemListener para Checkbox y RadioButton
+ItemEvent para Checkbox y RadioButton
+CaretListener para JTextField y JTextArea
+ChangeListener para Spinner
+ListSelectionListener para JList
+SelectionListener para JComboBox
 showMessageDialog*/

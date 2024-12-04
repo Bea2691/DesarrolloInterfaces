@@ -41,7 +41,7 @@ public class EjList3 {
 		
 		//Añadir listener
 		
-		lista.addListSelectionListener(new ListSelectionListener() {
+lista.addListSelectionListener(new ListSelectionListener() {
 			
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
